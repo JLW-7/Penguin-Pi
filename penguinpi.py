@@ -8,7 +8,9 @@ from pinpong.libs.dfrobot_speech_synthesis import DFRobot_SpeechSynthesis_I2C
 from pinpong.libs.dfrobot_asr import DFRobot_ASR
 from DFRobot_DF2301Q import *
 
-
+#界面初始化
+gui = GUI()
+Board().begin()
 
 #初始化距离传感器引脚
 #p_p21_analog=Pin(Pin.P21, Pin.ANALOG)
