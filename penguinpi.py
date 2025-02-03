@@ -10,6 +10,15 @@ from DFRobot_DF2301Q import *
 
 
 
+#初始化距离传感器引脚
+#p_p21_analog=Pin(Pin.P21, Pin.ANALOG)
+
+#语音合成模块初始化
+voice = DFRobot_SpeechSynthesis_I2C()
+voice.begin(voice.V2)
+voice.set_voice(5)
+voice.set_speed(7)
+
 
 #语音识别模块初始化
 DF2301Q = DFRobot_DF2301Q_I2C()
