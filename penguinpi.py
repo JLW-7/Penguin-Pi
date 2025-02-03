@@ -8,14 +8,14 @@ from pinpong.libs.dfrobot_speech_synthesis import DFRobot_SpeechSynthesis_I2C
 from pinpong.libs.dfrobot_asr import DFRobot_ASR
 from DFRobot_DF2301Q import *
 
-#界面初始化
+#Board initialization
 gui = GUI()
 Board().begin()
 
-#初始化距离传感器引脚
+#Infrared distance detector initialization
 #p_p21_analog=Pin(Pin.P21, Pin.ANALOG)
 
-#语音合成模块初始化
+#Speech synthesis module initialization
 voice = DFRobot_SpeechSynthesis_I2C()
 voice.begin(voice.V2)
 voice.set_voice(5)
