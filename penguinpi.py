@@ -6,14 +6,7 @@ from pinpong.libs.dfrobot_asr import DFRobot_ASR
 import time
 
 
-gui = GUI()
-Board().begin()
-p_p21_analog=Pin(Pin.P21, Pin.ANALOG)
-voice = DFRobot_SpeechSynthesis_I2C()
-voice.begin(voice.V2)
 
-def get_IR(value):
-    if value < 16:
         value = 16
     return 4800 / (value - 20)
 
