@@ -32,23 +32,6 @@ s = gui.draw_image(image = "SleepScene1.png", x = 0, y = 0)
 s.config(h = 320)
 
 
-abc = gui.draw_emoji(emoji = "Sleep", x = 0, y = -90, duration = 0.3)
-sleep = True
-
-interpreter = DFRobot_ASR()
-interpreter.begin(interpreter.PASSWORD, interpreter.MIC)
-interpreter.add_command("xiao pai xiao pai", 0)
-interpreter.add_command("ni hao", 1)
-interpreter.add_command("qing guan bi", 2)
-interpreter.add_command("guan bi", 2)
-interpreter.add_command("zai jian", 2)
-interpreter.add_command("shang xue", 3)
-interpreter.add_command("ke wai ke", 4)
-interpreter.add_command("shang ke wai ke", 4)
-interpreter.add_command("lv you", 5)
-interpreter.add_command("qu lv you", 5)
-
-interpreter.start()
 
 var = 9
 
