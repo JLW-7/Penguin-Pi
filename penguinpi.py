@@ -8,37 +8,50 @@ from pinpong.libs.dfrobot_speech_synthesis import DFRobot_SpeechSynthesis_I2C
 from pinpong.libs.dfrobot_asr import DFRobot_ASR
 from DFRobot_DF2301Q import *
 
+
 #Board initialization
+
 gui = GUI()
 Board().begin()
 
-#Infrared distance detector initialization
+
+#Infrared distance sensor initialization
+
 #p_p21_analog=Pin(Pin.P21, Pin.ANALOG)
 
+
 #Speech synthesis module initialization
+
 voice = DFRobot_SpeechSynthesis_I2C()
 voice.begin(voice.V2)
 voice.set_voice(5)
 voice.set_speed(7)
 
 
-#语音识别模块初始化
+#Voice recognition module initialization
+
 DF2301Q = DFRobot_DF2301Q_I2C()
 DF2301Q.set_wake_time(60)
 DF2301Q.set_volume(5)
 DF2301Q.set_mute_mode(1)
 
-#距离传感器计算距离函数
+
+#Distance calculation function for distance sensor
+
 def get_IR(value):
     if value < 16:
         value = 16
     return 4800 / (value - 20)
 
-#距离格式转换
+
+#Distance format conversion for distance sensor
+
 def number_map(x, in_min, in_max, out_min, out_max):
     return(x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
-#界面初始化
+
+#User-interface initialization
+
 p = gui.draw_image(image = "PeaceScene1.png", x = 0, y = -400)
 p.config(h = 320)
 school = gui.draw_image(image = "SchoolScene.png", x = 0, y = -400)
@@ -55,22 +68,28 @@ abc = gui.draw_emoji(emoji = "Sleep", x = 0, y = -90, duration = 0.3)
 sleep = True
 is_playing = False
 
-#初始化识别id的值
+
+#Id value initialization
+
 var = 0
 
 while True:
     if is_playing:
         continue
-        
-    #获取语音输入
+
+    
+    #Get voice input
+    
     var = DF2301Q.get_CMDID() 
     time.sleep(0.05)
+
     
-    #获取距离
-    #rd = p_p21_analog.read_analog()
-    #value = number_map(rd, 0, 4095, 255, 0)
-    #distance = int(get_IR(value))
-    #dis.config(text = str(int(value)))   
+    Get distance
+    
+    rd = p_p21_analog.read_analog()
+    value = number_map(rd, 0, 4095, 255, 0)
+    distance = int(get_IR(value))
+    dis.config(text = str(int(value)))   
     
     if ( var == 1 and sleep == True) :
         abc.config(emoji="Peace")
