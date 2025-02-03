@@ -9,15 +9,15 @@ from pinpong.libs.dfrobot_asr import DFRobot_ASR
 from DFRobot_DF2301Q import *
 
 
-#Board initialization
+# Board initialization
 
 gui = GUI()
 Board().begin()
 
 
-#Infrared distance sensor initialization
+# Infrared distance sensor initialization
 
-#p_p21_analog=Pin(Pin.P21, Pin.ANALOG)
+# p_p21_analog=Pin(Pin.P21, Pin.ANALOG)
 
 
 #Speech synthesis module initialization
@@ -28,7 +28,7 @@ voice.set_voice(5)
 voice.set_speed(7)
 
 
-#Voice recognition module initialization
+# Voice recognition module initialization
 
 DF2301Q = DFRobot_DF2301Q_I2C()
 DF2301Q.set_wake_time(60)
@@ -36,7 +36,7 @@ DF2301Q.set_volume(5)
 DF2301Q.set_mute_mode(1)
 
 
-#Distance calculation function for distance sensor
+# Distance calculation function for distance sensor
 
 def get_IR(value):
     if value < 16:
@@ -44,13 +44,13 @@ def get_IR(value):
     return 4800 / (value - 20)
 
 
-#Distance format conversion for distance sensor
+# Distance format conversion for distance sensor
 
 def number_map(x, in_min, in_max, out_min, out_max):
     return(x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
 
-#User-interface initialization
+# User-interface initialization
 
 p = gui.draw_image(image = "PeaceScene1.png", x = 0, y = -400)
 p.config(h = 320)
@@ -78,18 +78,18 @@ while True:
         continue
 
     
-    #Get voice input
+    # Get voice input
     
     var = DF2301Q.get_CMDID() 
     time.sleep(0.05)
 
     
-    Get distance
+    # Get distance
     
-    rd = p_p21_analog.read_analog()
-    value = number_map(rd, 0, 4095, 255, 0)
-    distance = int(get_IR(value))
-    dis.config(text = str(int(value)))   
+    # rd = p_p21_analog.read_analog()
+    # value = number_map(rd, 0, 4095, 255, 0)
+    # distance = int(get_IR(value))
+    # dis.config(text = str(int(value)))   
     
     if ( var == 1 and sleep == True) :
         abc.config(emoji="Peace")
